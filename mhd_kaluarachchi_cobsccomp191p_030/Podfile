@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'mhd_kaluarachchi_cobsccomp191p_030' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for mhd_kaluarachchi_cobsccomp191p_030
+
+  target 'mhd_kaluarachchi_cobsccomp191p_030Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'mhd_kaluarachchi_cobsccomp191p_030UITests' do
+    # Pods for testing
+  end
+
+end

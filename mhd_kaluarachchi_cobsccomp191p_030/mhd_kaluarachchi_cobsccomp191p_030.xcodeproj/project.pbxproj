@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4451F233250DC72700A78346 /* mhd_kaluarachchi_cobsccomp191p_030.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mhd_kaluarachchi_cobsccomp191p_030.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4451F233250DC72700A78346 /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451F236250DC72700A78346 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4451F238250DC72700A78346 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4451F23A250DC72700A78346 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		4451F234250DC72700A78346 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4451F233250DC72700A78346 /* mhd_kaluarachchi_cobsccomp191p_030.app */,
+				4451F233250DC72700A78346 /* NIBM COVID19.app */,
 				4451F249250DC72900A78346 /* mhd_kaluarachchi_cobsccomp191p_030Tests.xctest */,
 				4451F254250DC72900A78346 /* mhd_kaluarachchi_cobsccomp191p_030UITests.xctest */,
 			);
@@ -99,9 +99,11 @@
 		4451F235250DC72700A78346 /* mhd_kaluarachchi_cobsccomp191p_030 */ = {
 			isa = PBXGroup;
 			children = (
+				4451F266250DFAD300A78346 /* Model */,
+				4451F267250DFADF00A78346 /* View */,
+				4451F268250DFAE900A78346 /* Controller */,
 				4451F236250DC72700A78346 /* AppDelegate.swift */,
 				4451F238250DC72700A78346 /* SceneDelegate.swift */,
-				4451F23A250DC72700A78346 /* ViewController.swift */,
 				4451F23C250DC72700A78346 /* Main.storyboard */,
 				4451F23F250DC72900A78346 /* Assets.xcassets */,
 				4451F241250DC72900A78346 /* LaunchScreen.storyboard */,
@@ -128,6 +130,28 @@
 			path = mhd_kaluarachchi_cobsccomp191p_030UITests;
 			sourceTree = "<group>";
 		};
+		4451F266250DFAD300A78346 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4451F267250DFADF00A78346 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4451F268250DFAE900A78346 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4451F23A250DC72700A78346 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,7 +169,7 @@
 			);
 			name = mhd_kaluarachchi_cobsccomp191p_030;
 			productName = mhd_kaluarachchi_cobsccomp191p_030;
-			productReference = 4451F233250DC72700A78346 /* mhd_kaluarachchi_cobsccomp191p_030.app */;
+			productReference = 4451F233250DC72700A78346 /* NIBM COVID19.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4451F248250DC72900A78346 /* mhd_kaluarachchi_cobsccomp191p_030Tests */ = {
@@ -441,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Coventry.mhd-kaluarachchi-cobsccomp191p-030";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NIBM COVID19";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,7 +482,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Coventry.mhd-kaluarachchi-cobsccomp191p-030";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NIBM COVID19";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
