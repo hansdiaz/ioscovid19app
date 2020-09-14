@@ -25,24 +25,51 @@ class RegisterVC: UIViewController{
     //message popping validator labels
     
     
-    @IBOutlet weak var FirstNameLabel: UILabel!
+   
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var emailAddressLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
     
-    @IBOutlet weak var LastNameLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var EmailAddressLabel: UILabel!
-    
-    @IBOutlet weak var PasswordLabel: UILabel!
-    
-    
+    @IBOutlet var formStackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirstNameLabel.isHidden=true
-        LastNameLabel.isHidden=true
-        EmailAddressLabel.isHidden=true
-        PasswordLabel.isHidden=true
+        
+        self.firstNameLabel.isHidden=true
+        self.lastNameLabel.isHidden=true
+        self.emailAddressLabel.isHidden=true
+        self.passwordLabel.isHidden=true
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false;
+        
+        self.scrollView.addSubview(formStackView)
+        
+        self.formStackView.translatesAutoresizingMaskIntoConstraints=false
+        
+        self.formStackView.alignment = .fill
+        self.formStackView.distribution = .fillProportionally
+        formStackView.axis = .vertical
+        formStackView.spacing = 20.0
+        
+        self.formStackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor,constant: 20).isActive=true
+        self.formStackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor,constant: 20).isActive=true
+        
+        self.formStackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor,constant: 50).isActive=true
+        self.formStackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive=true
+        
+        
+        
+        //self.formStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive=true
+        
         // Do any additional setup after loading the view.
         userPicker.delegate=self
         userPicker.dataSource=self
+        
+        
+        
+        
 
     }
     
@@ -51,10 +78,10 @@ class RegisterVC: UIViewController{
     }
     
     @IBAction func createNow(_ sender: Any) {
-        FirstNameLabel.isHidden=false
-        LastNameLabel.isHidden=false
-        EmailAddressLabel.isHidden=false
-        PasswordLabel.isHidden=false    }
+        self.firstNameLabel.isHidden=false
+        self.lastNameLabel.isHidden=false
+        self.emailAddressLabel.isHidden=false
+        self.passwordLabel.isHidden=false    }
     
 }
 
