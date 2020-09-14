@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class RegisterVC: UIViewController{
     
@@ -14,9 +15,31 @@ class RegisterVC: UIViewController{
 
     @IBOutlet weak var userPicker: UIPickerView!
     
+    @IBOutlet weak var FirstName: UITextField!
+    
+    @IBOutlet weak var LastName: UITextField!
+    
+    @IBOutlet weak var EmailAddress: UITextField!
+    @IBOutlet weak var Password: UITextField!
+    
+    //message popping validator labels
+    
+    
+    @IBOutlet weak var FirstNameLabel: UILabel!
+    
+    @IBOutlet weak var LastNameLabel: UILabel!
+    
+    @IBOutlet weak var EmailAddressLabel: UILabel!
+    
+    @IBOutlet weak var PasswordLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirstNameLabel.isHidden=true
+        LastNameLabel.isHidden=true
+        EmailAddressLabel.isHidden=true
+        PasswordLabel.isHidden=true
         // Do any additional setup after loading the view.
         userPicker.delegate=self
         userPicker.dataSource=self
@@ -26,7 +49,13 @@ class RegisterVC: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    @IBAction func createNow(_ sender: Any) {
+        FirstNameLabel.isHidden=false
+        LastNameLabel.isHidden=false
+        EmailAddressLabel.isHidden=false
+        PasswordLabel.isHidden=false    }
+    
 }
 
 extension RegisterVC: UIPickerViewDelegate, UIPickerViewDataSource{
