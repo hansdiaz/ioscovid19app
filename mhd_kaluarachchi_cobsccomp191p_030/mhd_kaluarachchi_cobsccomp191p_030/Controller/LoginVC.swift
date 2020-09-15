@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class LoginVC:UIViewController{
     
@@ -32,6 +34,7 @@ class LoginVC:UIViewController{
     }
     
     @IBAction func signInNow(_ sender: Any) {
+        var status=true
         guard let email = EmailAddress.text, EmailAddress.text?.count != 0  else {
             errorLabel.isHidden = false
             errorLabel.text = "Please fill all details"
@@ -44,14 +47,33 @@ class LoginVC:UIViewController{
             return
         }
         
-        if isValidEmail(emailID: email) == false {
+        if isValidEmail(emailID: email) == false{
             errorLabel.isHidden = false
             EmailAddress.text=""
             errorLabel.text = "Please enter valid email address"
-        }else{
+            status=false
+        }
+        if isPasswordValid(password: password) == false{
+            errorLabel.isHidden = false
+            Password.text=""
+            errorLabel.text = "Password must be 8 letters including Caps and signs"
+            status=false
+        }
+            
+        
+        if(status==true){
             errorLabel.isHidden=true
             
-            //login comes here
+              // Signing in the user
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            
+            if error != nil {
+                // Couldn't sign in
+                self.errorLabel.text = "Invalid credentials"
+            }
+            
+        }
+            
         }
         
         
@@ -62,6 +84,12 @@ class LoginVC:UIViewController{
            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
            return emailTest.evaluate(with: emailID)
        }
+    
+    func isPasswordValid(password : String) -> Bool {
+        
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
     
     @IBAction func goBackToRegister(_ sender: Any) {
         dismiss(animated: true, completion: nil)

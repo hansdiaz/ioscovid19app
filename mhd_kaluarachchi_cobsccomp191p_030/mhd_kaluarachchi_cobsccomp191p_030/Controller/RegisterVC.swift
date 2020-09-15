@@ -9,6 +9,12 @@
 import UIKit
 import Foundation
 
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+
+
+
 class RegisterVC: UIViewController{
     
     private let dataSource = ["Student","Academic Staff","Non academic Staff"]
@@ -28,6 +34,8 @@ class RegisterVC: UIViewController{
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet var formStackView: UIStackView!
+    
+    var userType=""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +75,7 @@ class RegisterVC: UIViewController{
     }
     
     @IBAction func createNow(_ sender: Any) {
+        var status=true
         guard let fName = FirstName.text, FirstName.text?.count != 0  else {
             passwordLabel.isHidden = false
             passwordLabel.text = "Please fill all details"
@@ -95,10 +104,55 @@ class RegisterVC: UIViewController{
             passwordLabel.isHidden = false
             EmailAddress.text=""
             passwordLabel.text = "Please enter valid email address"
-        }else{
-            passwordLabel.isHidden=true
+            status=false
+        }
+        if isPasswordValid(password: password) == false{
+            passwordLabel.isHidden = false
+            Password.text=""
+            passwordLabel.text = "Password must be 8 letters including Caps and signs"
+            status=false
+        }
+        
+        
+        if(status==true){
             
-            //login comes here
+            //passwordLabel.isHidden=true
+            
+        
+            
+            // Create the user
+            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+                
+                // Check for errors
+                if err != nil {
+                    
+                    // There was an error creating the user
+                    self.passwordLabel.text="Error: Try out a different email"
+                }
+                else {
+                    
+                    // User was created successfully, now store the first name and last name
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType, "uid": result!.user.uid ]) { (error) in
+                        
+                        if error != nil {
+                            // Show error message
+                            self.passwordLabel.isHidden=true
+                            self.passwordLabel.text="Unexpected error occured"
+                        }
+                    }
+                    
+                    // Transition to the home screen
+                    //self.transitionToHome()
+                }
+                
+            }
+
+            
+            
+            
+            ///
         }
     }
     
@@ -108,6 +162,11 @@ class RegisterVC: UIViewController{
            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
            return emailTest.evaluate(with: emailID)
        }
+    func isPasswordValid(password : String) -> Bool {
+        
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
 
 }
 
@@ -120,7 +179,7 @@ extension RegisterVC: UIPickerViewDelegate, UIPickerViewDataSource{
         return dataSource.count}
         
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //datasource[row]
+        return self.userType=dataSource[row]
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataSource[row]
