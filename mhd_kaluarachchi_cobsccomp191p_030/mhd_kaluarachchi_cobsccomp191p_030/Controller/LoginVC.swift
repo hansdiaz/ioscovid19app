@@ -25,8 +25,6 @@ class LoginVC:UIViewController{
         super.viewDidLoad()
         self.errorLabel.isHidden=true
         
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
