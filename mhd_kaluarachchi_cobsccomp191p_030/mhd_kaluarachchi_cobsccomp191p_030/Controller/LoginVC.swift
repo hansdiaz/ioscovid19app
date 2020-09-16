@@ -89,7 +89,5 @@ class LoginVC:UIViewController{
         return passwordTest.evaluate(with: password)
     }
     
-    @IBAction func goBackToRegister(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+   
 }
