@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4406CC3E251106CB00D2FF6B /* SurveyBorderStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406CC3D251106CB00D2FF6B /* SurveyBorderStyling.swift */; };
 		4406CC402511204E00D2FF6B /* SurveyScreen1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406CC3F2511204E00D2FF6B /* SurveyScreen1VC.swift */; };
+		443ED0DE251311070092E111 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0DD251311070092E111 /* RootVC.swift */; };
+		443ED0E025131B160092E111 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0DF25131B160092E111 /* User.swift */; };
+		443ED0E2251329850092E111 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0E1251329850092E111 /* SettingsVC.swift */; };
+		443ED0E425136DDC0092E111 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0E325136DDC0092E111 /* Survey.swift */; };
 		4451F237250DC72700A78346 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4451F236250DC72700A78346 /* AppDelegate.swift */; };
 		4451F239250DC72700A78346 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4451F238250DC72700A78346 /* SceneDelegate.swift */; };
 		4451F23B250DC72700A78346 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4451F23A250DC72700A78346 /* RegisterVC.swift */; };
@@ -23,7 +27,13 @@
 		448427FE25127ADE0052B082 /* SurveyScreen3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448427FD25127ADE0052B082 /* SurveyScreen3VC.swift */; };
 		4484280025127B060052B082 /* SurveyScreen4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448427FF25127B060052B082 /* SurveyScreen4VC.swift */; };
 		4484280225127B2D0052B082 /* SurveyScreen5VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280125127B2D0052B082 /* SurveyScreen5VC.swift */; };
-		4484280425127B700052B082 /* SurveyCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280325127B700052B082 /* SurveyCompleteVC.swift */; };
+		44842808251294480052B082 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44842807251294480052B082 /* Regex.swift */; };
+		4484280A251298B10052B082 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44842809251298B10052B082 /* UpdateProfileVC.swift */; };
+		4484280C2512991E0052B082 /* UpdateHealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280B2512991E0052B082 /* UpdateHealthVC.swift */; };
+		4484280E251299CD0052B082 /* CreateNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280D251299CD0052B082 /* CreateNotificationVC.swift */; };
+		4484281025129AE10052B082 /* FullMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280F25129AE10052B082 /* FullMapVC.swift */; };
+		448428122512A5050052B082 /* AllNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448428112512A5050052B082 /* AllNotificationsVC.swift */; };
+		448428142512AB580052B082 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448428132512AB580052B082 /* NotificationVC.swift */; };
 		44ABA4F82511CBA200A7510C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABA4F72511CBA200A7510C /* HomeVC.swift */; };
 		B39214971BD0CD70660FBC52 /* Pods_mhd_kaluarachchi_cobsccomp191p_030.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A17E5E3F9A5E82BCAFA1A0 /* Pods_mhd_kaluarachchi_cobsccomp191p_030.framework */; };
 		BA696E98073FEAB3D4926799 /* Pods_mhd_kaluarachchi_cobsccomp191p_030_mhd_kaluarachchi_cobsccomp191p_030UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB8D7BD3FA2E49A5D8AA778 /* Pods_mhd_kaluarachchi_cobsccomp191p_030_mhd_kaluarachchi_cobsccomp191p_030UITests.framework */; };
@@ -53,6 +63,10 @@
 		3288376D6DE67986913461AD /* Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig"; path = "Target Support Files/Pods-mhd_kaluarachchi_cobsccomp191p_030/Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig"; sourceTree = "<group>"; };
 		4406CC3D251106CB00D2FF6B /* SurveyBorderStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyBorderStyling.swift; sourceTree = "<group>"; };
 		4406CC3F2511204E00D2FF6B /* SurveyScreen1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreen1VC.swift; sourceTree = "<group>"; };
+		443ED0DD251311070092E111 /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		443ED0DF25131B160092E111 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		443ED0E1251329850092E111 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		443ED0E325136DDC0092E111 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		4451F233250DC72700A78346 /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451F236250DC72700A78346 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4451F238250DC72700A78346 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +87,13 @@
 		448427FD25127ADE0052B082 /* SurveyScreen3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreen3VC.swift; sourceTree = "<group>"; };
 		448427FF25127B060052B082 /* SurveyScreen4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreen4VC.swift; sourceTree = "<group>"; };
 		4484280125127B2D0052B082 /* SurveyScreen5VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreen5VC.swift; sourceTree = "<group>"; };
-		4484280325127B700052B082 /* SurveyCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCompleteVC.swift; sourceTree = "<group>"; };
+		44842807251294480052B082 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		44842809251298B10052B082 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
+		4484280B2512991E0052B082 /* UpdateHealthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHealthVC.swift; sourceTree = "<group>"; };
+		4484280D251299CD0052B082 /* CreateNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationVC.swift; sourceTree = "<group>"; };
+		4484280F25129AE10052B082 /* FullMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapVC.swift; sourceTree = "<group>"; };
+		448428112512A5050052B082 /* AllNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotificationsVC.swift; sourceTree = "<group>"; };
+		448428132512AB580052B082 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		44ABA4F72511CBA200A7510C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A799CE39D3C326835CAD6D4D /* Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig"; path = "Target Support Files/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AE6573C574295BECEE200055 /* Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.debug.xcconfig"; path = "Target Support Files/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +149,6 @@
 				448427FD25127ADE0052B082 /* SurveyScreen3VC.swift */,
 				448427FF25127B060052B082 /* SurveyScreen4VC.swift */,
 				4484280125127B2D0052B082 /* SurveyScreen5VC.swift */,
-				4484280325127B700052B082 /* SurveyCompleteVC.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -191,6 +210,8 @@
 		4451F266250DFAD300A78346 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				443ED0DF25131B160092E111 /* User.swift */,
+				443ED0E325136DDC0092E111 /* Survey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,12 +227,21 @@
 		4451F268250DFAE900A78346 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				448428062512941F0052B082 /* Helper */,
 				4406CC412511219200D2FF6B /* Survey */,
 				4451F238250DC72700A78346 /* SceneDelegate.swift */,
 				4451F236250DC72700A78346 /* AppDelegate.swift */,
 				4451F23A250DC72700A78346 /* RegisterVC.swift */,
 				4481F4F4250F40E000A05555 /* LoginVC.swift */,
 				44ABA4F72511CBA200A7510C /* HomeVC.swift */,
+				44842809251298B10052B082 /* UpdateProfileVC.swift */,
+				4484280B2512991E0052B082 /* UpdateHealthVC.swift */,
+				4484280D251299CD0052B082 /* CreateNotificationVC.swift */,
+				4484280F25129AE10052B082 /* FullMapVC.swift */,
+				448428112512A5050052B082 /* AllNotificationsVC.swift */,
+				448428132512AB580052B082 /* NotificationVC.swift */,
+				443ED0DD251311070092E111 /* RootVC.swift */,
+				443ED0E1251329850092E111 /* SettingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,6 +253,14 @@
 				4451F241250DC72900A78346 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		448428062512941F0052B082 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				44842807251294480052B082 /* Regex.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		817FD33D6C2CB85803BF6A94 /* Pods */ = {
@@ -479,17 +517,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				4451F23B250DC72700A78346 /* RegisterVC.swift in Sources */,
-				4484280425127B700052B082 /* SurveyCompleteVC.swift in Sources */,
 				448427FC25127ABA0052B082 /* SurveyScreen2VC.swift in Sources */,
 				44ABA4F82511CBA200A7510C /* HomeVC.swift in Sources */,
 				4451F237250DC72700A78346 /* AppDelegate.swift in Sources */,
+				448428142512AB580052B082 /* NotificationVC.swift in Sources */,
 				4481F4F5250F40E000A05555 /* LoginVC.swift in Sources */,
+				4484280C2512991E0052B082 /* UpdateHealthVC.swift in Sources */,
 				4484280225127B2D0052B082 /* SurveyScreen5VC.swift in Sources */,
 				4484280025127B060052B082 /* SurveyScreen4VC.swift in Sources */,
+				4484280E251299CD0052B082 /* CreateNotificationVC.swift in Sources */,
+				443ED0E2251329850092E111 /* SettingsVC.swift in Sources */,
 				4451F239250DC72700A78346 /* SceneDelegate.swift in Sources */,
+				443ED0DE251311070092E111 /* RootVC.swift in Sources */,
 				448427FE25127ADE0052B082 /* SurveyScreen3VC.swift in Sources */,
 				4406CC402511204E00D2FF6B /* SurveyScreen1VC.swift in Sources */,
+				448428122512A5050052B082 /* AllNotificationsVC.swift in Sources */,
 				4406CC3E251106CB00D2FF6B /* SurveyBorderStyling.swift in Sources */,
+				443ED0E425136DDC0092E111 /* Survey.swift in Sources */,
+				44842808251294480052B082 /* Regex.swift in Sources */,
+				4484281025129AE10052B082 /* FullMapVC.swift in Sources */,
+				443ED0E025131B160092E111 /* User.swift in Sources */,
+				4484280A251298B10052B082 /* UpdateProfileVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

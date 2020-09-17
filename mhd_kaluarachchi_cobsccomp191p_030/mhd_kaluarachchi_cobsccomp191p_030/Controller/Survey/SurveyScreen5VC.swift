@@ -16,6 +16,37 @@ class SurveyScreen5VC: UIViewController{
    
     }
     
+    @IBAction func noClick(_ sender: Any) {
+        SurveyData.s5=false
+        //self.performSegue(withIdentifier: "noS5", sender: nil)
+        print(SurveyData.s1)
+        print("s1--------------------------------------------------------------")
+        print(SurveyData.s2)
+        print("s2--------------------------------------------------------------")
+        print(SurveyData.s3)
+        print("s3--------------------------------------------------------------")
+        print(SurveyData.s4)
+        print("s4--------------------------------------------------------------")
+        print(SurveyData.s5)
+        print("s5--------------------------------------------------------------")
+    }
+    
+    
+    @IBAction func yesClick(_ sender: Any) {
+        SurveyData.s5=true
+        //self.performSegue(withIdentifier: "yesS5", sender: nil)
+        print(SurveyData.s1)
+        print("s1--------------------------------------------------------------")
+        print(SurveyData.s2)
+        print("s2--------------------------------------------------------------")
+        print(SurveyData.s3)
+        print("s3--------------------------------------------------------------")
+        print(SurveyData.s4)
+        print("s4--------------------------------------------------------------")
+        print(SurveyData.s5)
+        print("s5--------------------------------------------------------------")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

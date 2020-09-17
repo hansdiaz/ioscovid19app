@@ -26,9 +26,9 @@ class RegisterVC: UIViewController{
     @IBOutlet weak var LastName: UITextField!
     
     @IBOutlet weak var EmailAddress: UITextField!
+    
     @IBOutlet weak var Password: UITextField!
     
-
     @IBOutlet weak var passwordLabel: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -100,26 +100,26 @@ class RegisterVC: UIViewController{
             return
         }
         
-        if isValidEmail(emailID: email) == false {
+        if Regex.isValidEmail(emailID: email) == false {
             passwordLabel.isHidden = false
             EmailAddress.text=""
             passwordLabel.text = "Please enter valid email address"
             status=false
         }
-        if isPasswordValid(password: password) == false{
+        if Regex.isPasswordValid(password:password)==false{
             passwordLabel.isHidden = false
             Password.text=""
             passwordLabel.text = "Password must be 8 letters including Caps and signs"
             status=false
         }
-        
+        if (userType == "") {
+            userType="Student"
+        }
         
         if(status==true){
             
-            //passwordLabel.isHidden=true
-            
-        
-            
+            //
+
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
@@ -127,46 +127,49 @@ class RegisterVC: UIViewController{
                 if err != nil {
                     
                     // There was an error creating the user
+                    self.passwordLabel.isHidden=false
                     self.passwordLabel.text="Error: Try out a different email"
                 }
                 else {
                     
                     // User was created successfully, now store the first name and last name
                     let db = Firestore.firestore()
+                    //get current date
+                    let formatter : DateFormatter = DateFormatter()
+                    formatter.dateFormat = "d/M/yy"
+                    let regDate : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
                     
-                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType, "uid": result!.user.uid ]) { (error) in
+                    
+                    
+                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate, "uid": result!.user.uid ]) { (error) in
                         
                         if error != nil {
                             // Show error message
                             self.passwordLabel.isHidden=true
                             self.passwordLabel.text="Unexpected error occured"
                         }
+                        User.userType=self.userType  //adding data at registration the user type
                     }
                     
-                    // Transition to the home screen
-                    //self.transitionToHome()
+                    if Auth.auth().currentUser?.uid != nil {
+                        User.userLogStatus=true
+                        print("log status is true++++++++++++++++++++++++++++++++++++++++++++++++at REg")
+                        
+                    } else {
+                       User.userLogStatus=false
+                        print("log status is false++++++++++++++++++++++++++++++++++++++++++++++++++++++++++at Reg")
+                    }
+                    
+                    self.performSegue(withIdentifier: "registerToHome", sender: nil)
                 }
                 
             }
 
             
-            
-            
-            ///
         }
     }
+
     
-    //emailvalidationfunction
-    func isValidEmail(emailID:String) -> Bool {
-           let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-           let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-           return emailTest.evaluate(with: emailID)
-       }
-    func isPasswordValid(password : String) -> Bool {
-        
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-        return passwordTest.evaluate(with: password)
-    }
 
 }
 

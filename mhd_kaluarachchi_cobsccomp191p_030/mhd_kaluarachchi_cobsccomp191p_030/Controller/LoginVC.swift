@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class LoginVC:UIViewController{
     
@@ -45,49 +46,64 @@ class LoginVC:UIViewController{
             return
         }
         
-        if isValidEmail(emailID: email) == false{
+        if Regex.isValidEmail(emailID: email) == false{
             errorLabel.isHidden = false
             EmailAddress.text=""
             errorLabel.text = "Please enter valid email address"
             status=false
         }
-        if isPasswordValid(password: password) == false{
+        if Regex.isPasswordValid(password: password) == false{
             errorLabel.isHidden = false
             Password.text=""
             errorLabel.text = "Password must be 8 letters including Caps and signs"
             status=false
         }
-            
         
         if(status==true){
             errorLabel.isHidden=true
             
               // Signing in the user
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             
             if error != nil {
                 // Couldn't sign in
                 self.errorLabel.text = "Invalid credentials"
+                User.userLogStatus=false
+                print("User login unsuccessful")
+                print(User.userLogStatus)
+            }else{
+                User.userLogStatus=true
+                print("User logged in successfully")
+                print(User.userLogStatus)
+                //get user type
+                
+                
+                
+                let db = Firestore.firestore()
+                let userdata = Auth.auth().currentUser!.uid  //getting user id
+                db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                            let documentData = document.data()
+                            let typedata = documentData["type"]! as! String
+                            print(typedata)
+                            User.userType=typedata
+                    }
+                  }
+                }
+                
+                
+                
+                self.performSegue(withIdentifier: "loginToHome", sender: nil)
             }
-            
         }
             
         }
         
         
     }
-    //emailvalidationfunction
-    func isValidEmail(emailID:String) -> Bool {
-           let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-           let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-           return emailTest.evaluate(with: emailID)
-       }
-    
-    func isPasswordValid(password : String) -> Bool {
-        
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-        return passwordTest.evaluate(with: password)
-    }
-    
    
 }

@@ -8,16 +8,52 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval:2.0)
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        if Auth.auth().currentUser?.uid != nil {
+            User.userLogStatus=true
+            let userdata = Auth.auth().currentUser!.uid
+            print(userdata)
+            //get user type from firestore
+            
+            // Create a reference to the cities collection
+            let db = Firestore.firestore()
+
+            db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                        let documentData = document.data()
+                        let typedata = documentData["type"]! as! String
+                        print(typedata)
+                        User.userType=typedata
+                }
+              }
+            }
+            
+            print("log status is true++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            
+        } else {
+           User.userLogStatus=false
+            print("log status is false++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        }
+        print(User.userLogStatus)
+        print("+++++++++++++++++")
+        
+        
         return true
     }
 
