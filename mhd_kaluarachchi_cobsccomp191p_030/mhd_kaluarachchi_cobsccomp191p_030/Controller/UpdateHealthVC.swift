@@ -31,8 +31,6 @@ class UpdateHealthVC: UIViewController{
         }else{
             self.NewNotificationButton.isHidden=true
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

@@ -2338,6 +2338,7 @@
                                         <state key="normal" title="Update Now"/>
                                         <connections>
                                             <action selector="signInNow:" destination="kb5-U3-SGC" eventType="touchUpInside" id="lOI-Hj-mI6"/>
+                                            <action selector="updateNow:" destination="kb5-U3-SGC" eventType="touchUpInside" id="OkW-J9-aZb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2357,6 +2358,13 @@
                         <viewLayoutGuide key="safeArea" id="Lrl-31-8Vt"/>
                     </view>
                     <navigationItem key="navigationItem" id="QeL-j6-YaN"/>
+                    <connections>
+                        <outlet property="CountryPicker" destination="jVa-y9-RWq" id="1gR-U8-Rca"/>
+                        <outlet property="ErrorLabel" destination="2h4-BL-oaP" id="Vhj-Dd-r7V"/>
+                        <outlet property="FirstNameText" destination="P97-NV-tmt" id="Kw4-Cy-dND"/>
+                        <outlet property="IndexText" destination="jpe-1A-W0G" id="WXd-6c-FKa"/>
+                        <outlet property="LastNameText" destination="jp3-bE-Gsa" id="dbK-rq-mQu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="po3-PU-pum" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
