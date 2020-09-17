@@ -17,7 +17,7 @@ import FirebaseFirestore
 
 class RegisterVC: UIViewController{
     
-    private let dataSource = ["Student","Academic Staff","Non academic Staff"]
+    private let dataSource = ["Student","Academic Staff","Non Academic Staff"]
 
     @IBOutlet weak var userPicker: UIPickerView!
     
@@ -141,7 +141,7 @@ class RegisterVC: UIViewController{
                     
                     
                     
-                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate, "uid": result!.user.uid ]) { (error) in
+                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate,"index":"","country":"", "uid": result!.user.uid ]) { (error) in
                         
                         if error != nil {
                             // Show error message

@@ -950,7 +950,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="xew-9q-pcw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="ProfileUpdate"/>
+                                                <state key="normal" title="Profile Update"/>
                                                 <connections>
                                                     <action selector="profileUpdate:" destination="eye-v1-9vY" eventType="touchUpInside" id="dMz-kO-A0a"/>
                                                     <action selector="profileUpdateButton:" destination="2dK-iX-9ta" eventType="touchUpInside" id="ZPM-qO-JFX"/>
@@ -2295,7 +2295,7 @@
                                             <constraint firstAttribute="height" constant="40" id="9Em-3F-moG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Student ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpe-1A-W0G">
                                         <rect key="frame" x="0.0" y="210" width="374" height="40"/>
@@ -2337,7 +2337,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Update Now"/>
                                         <connections>
-                                            <action selector="signInNow:" destination="kb5-U3-SGC" eventType="touchUpInside" id="lOI-Hj-mI6"/>
                                             <action selector="updateNow:" destination="kb5-U3-SGC" eventType="touchUpInside" id="OkW-J9-aZb"/>
                                         </connections>
                                     </button>
@@ -2630,7 +2629,7 @@
         <segue reference="ENq-rV-Ckp"/>
         <segue reference="Cdy-Q9-rbe"/>
         <segue reference="weE-uq-8gY"/>
-        <segue reference="dN9-fa-Heo"/>
+        <segue reference="dXx-Ag-yeO"/>
         <segue reference="qFa-6D-EJC"/>
     </inferredMetricsTieBreakers>
     <resources>
