@@ -1663,7 +1663,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last updated at:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiN-2L-9bu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last updated: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiN-2L-9bu">
                                         <rect key="frame" x="0.0" y="195" width="414" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="jQq-6Z-u7O"/>
@@ -1749,6 +1749,9 @@
                                                         <state key="normal" title="Update">
                                                             <color key="titleColor" red="0.90306776759999996" green="0.1117154434" blue="0.1441576779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="updateTemperature:" destination="0lA-rv-03U" eventType="touchUpInside" id="G7c-6q-jph"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1819,8 +1822,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Update Health Status" id="lfZ-CX-61o"/>
                     <connections>
+                        <outlet property="BodyTemp" destination="RQD-3S-Fx5" id="aTa-5d-cZw"/>
                         <outlet property="NewNotificationButton" destination="aeg-DA-jaj" id="Who-0v-iLY"/>
                         <outlet property="loginRequestView" destination="sKR-hn-41K" id="wxH-nH-mgp"/>
+                        <outlet property="tempLabel" destination="UXm-W8-zv6" id="EJn-2P-R2N"/>
+                        <outlet property="updatedDate" destination="9N6-Qv-h3K" id="pVV-8n-fZG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRJ-Ao-7a4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2523,6 +2529,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Publish Notification"/>
+                                        <connections>
+                                            <action selector="publishNotification:" destination="a4O-Xo-Dal" eventType="touchUpInside" id="VaT-11-Wvj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yl6-9e-5n9">
                                         <rect key="frame" x="0.0" y="510" width="374" height="50"/>
@@ -2534,6 +2543,7 @@
                                             <color key="titleColor" red="0.90306776759999996" green="0.1117154434" blue="0.1441576779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="discardPost:" destination="a4O-Xo-Dal" eventType="touchUpInside" id="ywK-ve-wE5"/>
                                             <segue destination="W08-Dn-0cK" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="PBf-sn-ZJD"/>
                                         </connections>
                                     </button>
@@ -2558,6 +2568,11 @@
                         <viewLayoutGuide key="safeArea" id="BkC-BF-Ly8"/>
                     </view>
                     <navigationItem key="navigationItem" id="267-Qj-d7a"/>
+                    <connections>
+                        <outlet property="NotifSummary" destination="Y96-iX-vOd" id="slr-RI-FbK"/>
+                        <outlet property="NotifTopic" destination="gbk-gh-kGH" id="4vq-Nc-LTv"/>
+                        <outlet property="errorLabel" destination="xuE-Pd-ajg" id="gOm-Wf-A1R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYT-Mo-mnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2629,7 +2644,7 @@
         <segue reference="ENq-rV-Ckp"/>
         <segue reference="Cdy-Q9-rbe"/>
         <segue reference="weE-uq-8gY"/>
-        <segue reference="dXx-Ag-yeO"/>
+        <segue reference="PBf-sn-ZJD"/>
         <segue reference="qFa-6D-EJC"/>
     </inferredMetricsTieBreakers>
     <resources>

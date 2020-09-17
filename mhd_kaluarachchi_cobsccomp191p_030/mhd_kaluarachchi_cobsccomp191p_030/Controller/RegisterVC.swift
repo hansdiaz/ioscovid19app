@@ -118,7 +118,6 @@ class RegisterVC: UIViewController{
         
         if(status==true){
             
-            //
 
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -141,11 +140,11 @@ class RegisterVC: UIViewController{
                     
                     
                     
-                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate,"index":"","country":"", "uid": result!.user.uid ]) { (error) in
+                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate,"temp":"","tempdate":"","health":"","index":"","country":"", "uid": result!.user.uid ]) { (error) in
                         
                         if error != nil {
                             // Show error message
-                            self.passwordLabel.isHidden=true
+                            self.passwordLabel.isHidden=false
                             self.passwordLabel.text="Unexpected error occured"
                         }
                         User.userType=self.userType  //adding data at registration the user type

@@ -93,6 +93,8 @@ class UpdateProfileVC: UIViewController{
                 ErrorLabel.isHidden = false
                 ErrorLabel.text = "Please fill all details"
                 return
+                }else{
+                    index = IndexText.text!
             }
         }else if(User.userType=="Academic Staff"){
             index=""
@@ -107,7 +109,7 @@ class UpdateProfileVC: UIViewController{
         
         //update query
         let db = Firestore.firestore()
-        db.collection("users").document(documentIdString).setData(["firstname":fName,"lastname":lName,"index":IndexText.text,"country":country], merge:true)
+        db.collection("users").document(documentIdString).setData(["firstname":fName,"lastname":lName,"index":index,"country":country], merge:true)
         
     }
     

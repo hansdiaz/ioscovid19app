@@ -8,12 +8,22 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class UpdateHealthVC: UIViewController{
     
     @IBOutlet weak var loginRequestView: UIView!
     
     @IBOutlet weak var NewNotificationButton: UIButton!
+    
+    @IBOutlet weak var updatedDate: UILabel!
+    
+    @IBOutlet weak var tempLabel: UILabel!
+    
+    @IBOutlet weak var BodyTemp: UITextField!
+    
+    var documentIdString=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +41,46 @@ class UpdateHealthVC: UIViewController{
         }else{
             self.NewNotificationButton.isHidden=true
         }
+        
+        //setting the data for labels
+        let userdata = Auth.auth().currentUser!.uid
+        print(userdata)
+        //get user type from firestore
+        
+        // Create a reference to the cities collection
+        let db = Firestore.firestore()
+        var temp=""
+        var tempdate=""
+        db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                print("\(document.documentID) => \(document.data())")
+                    let documentData = document.data()
+                    temp = documentData["temp"]! as! String
+                    tempdate = documentData["tempdate"]! as! String
+                    self.tempLabel.text=temp
+                    self.updatedDate.text=tempdate
+                    self.documentIdString=document.documentID
+            }
+          }
+        }
+        
+    }
+    @IBAction func updateTemperature(_ sender: Any) {
+        //validation
+        
+        
+        //get current date
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "d/M/yy"
+        let tempDate : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
+        
+        //update query
+        let db = Firestore.firestore()
+        db.collection("users").document(documentIdString).setData(["temp":BodyTemp.text,"tempdate":tempDate], merge:true)
+        
     }
     
     override func didReceiveMemoryWarning() {
