@@ -21,6 +21,13 @@ class HomeVC: UIViewController{
     @IBOutlet var formStackView: UIStackView!
     
     
+    
+    @IBOutlet weak var lowLabel: UILabel!
+    
+    @IBOutlet weak var midLabel: UILabel!
+    
+    @IBOutlet weak var highLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.translatesAutoresizingMaskIntoConstraints = false;
@@ -42,11 +49,52 @@ class HomeVC: UIViewController{
                
                formStackView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
                
-       
-        //self.formStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive=true
+                
+        
+        //get data from firebase on the count of infectious people
+        let low="low possibility"
+        let mid="mid possibility"
+        let high="high possibility"
+        
+        var lowCount=0
+        var midCount=0
+        var highCount=0
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").whereField("health", isEqualTo: low).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                lowCount = lowCount+querySnapshot!.count
+                self.lowLabel.text=String(lowCount)
+            }
+        }
+        db.collection("users").whereField("health", isEqualTo: mid).getDocuments() { (querySnapshot, err) in
+          if let err = err {
+              print("Error getting documents: \(err)")
+          } else {
+            midCount = midCount+querySnapshot!.count
+            self.midLabel.text=String(midCount)
+          }
+        }
+        db.collection("users").whereField("health", isEqualTo: high).getDocuments() { (querySnapshot, err) in
+          if let err = err {
+              print("Error getting documents: \(err)")
+          } else {
+              highCount = midCount+querySnapshot!.count
+            self.highLabel.text=String(highCount)
+          }
+        }
+        
+        
         
         
     }
+                
+        
+        
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

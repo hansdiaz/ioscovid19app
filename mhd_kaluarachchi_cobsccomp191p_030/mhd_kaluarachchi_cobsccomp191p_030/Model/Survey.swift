@@ -14,4 +14,5 @@ struct SurveyData{
     static var s3=Bool()
     static var s4=Bool()
     static var s5=Bool()
+    static var health=String()
 }

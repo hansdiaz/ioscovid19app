@@ -52,7 +52,7 @@ class UpdateProfileVC: UIViewController{
             print(userdata)
             //get user type from firestore
             
-            // Create a reference to the cities collection
+            // Create a reference to the collection
             let db = Firestore.firestore()
             
             db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
