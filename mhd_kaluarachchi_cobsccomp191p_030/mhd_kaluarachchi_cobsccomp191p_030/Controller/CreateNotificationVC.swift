@@ -18,14 +18,29 @@ class CreateNotificationVC: UIViewController{
     @IBOutlet weak var NotifSummary: UITextField!
     
     @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.errorLabel.isHidden=true
    
     }
     @IBAction func publishNotification(_ sender: Any) {
-        
+        var proceedStatus=true
         //validation
+        guard let notifTopic = NotifTopic.text, NotifTopic.text?.count != 0  else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Please fill all details"
+            proceedStatus=false
+            return
+        }
+        
+        guard let notifSummary = NotifSummary.text, NotifSummary.text?.count != 0  else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Please fill all details"
+            proceedStatus=false
+            return
+        }
+        
         
         //create
         let userdata = Auth.auth().currentUser!.uid
@@ -37,18 +52,52 @@ class CreateNotificationVC: UIViewController{
         
         
         
-        db.collection("notifications").addDocument(data: ["notiftopic":NotifTopic.text!, "notif":NotifSummary.text!,"notifdate":notifDate, "uid": userdata ]) { (error) in
+        db.collection("notifications").addDocument(data: ["notiftopic":notifTopic, "notifsummary":notifSummary,"notifdate":notifDate, "uid": userdata ]) { (error) in
             
             if error != nil {
                 // Show error message
                 self.errorLabel.isHidden=false
                 self.errorLabel.text="Unexpected error occured"
             }
+            if proceedStatus==true{
+                self.performSegue(withIdentifier: "publishandgohome", sender: nil)
+            }
         }
     }
     
     @IBAction func discardPost(_ sender: Any) {
+       
+        var status1=true
+        var status2=true
+        if(NotifTopic.text==""){
+            status1=false
+        }
+        if(NotifSummary.text==""){
+            status2=false
+        }
+        if(status1==true || status2==true){
+            let alert = UIAlertController(title: "Discard Post?", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Don't", style: .cancel, handler: nil))
+
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                //logic
+                self.performSegue(withIdentifier: "publishandgohome", sender: nil)
+                
+            }))
+            self.present(alert, animated: true)
+            
+        }
+        else{
+            self.performSegue(withIdentifier: "publishandgohome", sender: nil)
+        }
+        
     }
+    
+   
+     
+
+     
+    
     
     
     override func didReceiveMemoryWarning() {

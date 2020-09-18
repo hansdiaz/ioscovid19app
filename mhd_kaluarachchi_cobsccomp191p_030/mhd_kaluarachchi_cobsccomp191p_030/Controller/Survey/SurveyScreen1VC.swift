@@ -17,14 +17,11 @@ class SurveyScreen1VC: UIViewController{
     }
     @IBAction func noClick(_ sender: Any) {
         SurveyData.s1=false
-        
-        //self.performSegue(withIdentifier: "noS1", sender: nil)
+        self.performSegue(withIdentifier: "s1", sender: nil)
     }
     @IBAction func yesClick(_ sender: Any) {
         SurveyData.s1=true
-        print(SurveyData.s1)
-        print("s1--------------------------------------------------------------")
-        //self.performSegue(withIdentifier: "yesS1", sender: nil)
+        self.performSegue(withIdentifier: "s1", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

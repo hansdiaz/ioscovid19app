@@ -18,13 +18,13 @@ class SurveyScreen3VC: UIViewController{
     
     @IBAction func noClick(_ sender: Any) {
         SurveyData.s3=false
-        //self.performSegue(withIdentifier: "noS3", sender: nil)
+        self.performSegue(withIdentifier: "s3", sender: nil)
     }
     
     
     @IBAction func yesClick(_ sender: Any) {
         SurveyData.s3=true
-        //self.performSegue(withIdentifier: "yesS3", sender: nil)
+        self.performSegue(withIdentifier: "s3", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

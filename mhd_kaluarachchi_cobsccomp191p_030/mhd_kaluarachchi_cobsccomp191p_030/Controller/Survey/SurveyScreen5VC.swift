@@ -18,7 +18,7 @@ class SurveyScreen5VC: UIViewController{
     
     @IBAction func noClick(_ sender: Any) {
         SurveyData.s5=false
-        //self.performSegue(withIdentifier: "noS5", sender: nil)
+        self.performSegue(withIdentifier: "s5", sender: nil)
         print(SurveyData.s1)
         print("s1--------------------------------------------------------------")
         print(SurveyData.s2)
@@ -34,7 +34,7 @@ class SurveyScreen5VC: UIViewController{
     
     @IBAction func yesClick(_ sender: Any) {
         SurveyData.s5=true
-        //self.performSegue(withIdentifier: "yesS5", sender: nil)
+        self.performSegue(withIdentifier: "s5", sender: nil)
         print(SurveyData.s1)
         print("s1--------------------------------------------------------------")
         print(SurveyData.s2)

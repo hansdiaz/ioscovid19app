@@ -17,12 +17,19 @@ class UpdateHealthVC: UIViewController{
     
     @IBOutlet weak var NewNotificationButton: UIButton!
     
-    @IBOutlet weak var updatedDate: UILabel!
+    //survey Updated Date survey
+    @IBOutlet weak var updatedDateSurvey: UILabel!
+    
+    //survey Updated Date health
+    @IBOutlet weak var updatedDateHealth: UILabel!
+    
+    
+    @IBOutlet weak var TempPicker: UIPickerView!
+    private let dataSource = ["35°C - 37.5°C","Above 37.5°C"]
     
     @IBOutlet weak var tempLabel: UILabel!
     
-    @IBOutlet weak var BodyTemp: UITextField!
-    
+    var bodyTemp=""
     var documentIdString=""
     
     override func viewDidLoad() {
@@ -42,35 +49,55 @@ class UpdateHealthVC: UIViewController{
             self.NewNotificationButton.isHidden=true
         }
         
-        //setting the data for labels
-        let userdata = Auth.auth().currentUser!.uid
-        print(userdata)
-        //get user type from firestore
         
-        // Create a reference to the cities collection
-        let db = Firestore.firestore()
-        var temp=""
-        var tempdate=""
-        db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                print("\(document.documentID) => \(document.data())")
-                    let documentData = document.data()
-                    temp = documentData["temp"]! as! String
-                    tempdate = documentData["tempdate"]! as! String
-                    self.tempLabel.text=temp
-                    self.updatedDate.text=tempdate
-                    self.documentIdString=document.documentID
+        if Auth.auth().currentUser?.uid != nil {
+            User.userLogStatus=true
+            
+            //setting the data for labels
+            let userdata = Auth.auth().currentUser!.uid
+            print(userdata)
+            //get user type from firestore
+            
+            // Create a reference to the cities collection
+            let db = Firestore.firestore()
+            var temp=""
+            var tempdate=""
+            var surveydate=""
+            db.collection("users").whereField("uid", isEqualTo: userdata).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                        let documentData = document.data()
+                        temp = documentData["temp"]! as! String
+                        tempdate = documentData["tempdate"]! as! String
+                        surveydate = documentData["surveydate"]! as! String
+                        self.tempLabel.text=temp
+                        self.updatedDateSurvey.text=surveydate
+                        self.updatedDateHealth.text=tempdate
+                        self.documentIdString=document.documentID
+                        if(temp=="35°C - 37.5°C"){
+                            self.TempPicker.selectRow(0, inComponent:0, animated:true)
+                        }else if(temp=="Above 37.5°C"){
+                            self.TempPicker.selectRow(1, inComponent:0, animated:true)
+                        }
+                }
+              }
             }
-          }
+            
+        }else{
+            User.userLogStatus=false
         }
+        
+        TempPicker.delegate=self
+        TempPicker.dataSource=self
         
     }
     @IBAction func updateTemperature(_ sender: Any) {
-        //validation
-        
+        if(self.bodyTemp==""){
+            self.bodyTemp="35°C - 37.5°C"
+        }
         
         //get current date
         let formatter : DateFormatter = DateFormatter()
@@ -79,11 +106,34 @@ class UpdateHealthVC: UIViewController{
         
         //update query
         let db = Firestore.firestore()
-        db.collection("users").document(documentIdString).setData(["temp":BodyTemp.text,"tempdate":tempDate], merge:true)
+        db.collection("users").document(documentIdString).setData(["temp":self.bodyTemp,"tempdate":tempDate], merge:true)
+        
+        self.tempLabel.text=bodyTemp
+        self.updatedDateHealth.text=tempDate
+        
+        let alert = UIAlertController(title: "Temperature Update Success", message: nil,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        self.present(alert, animated: true)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
+
+extension UpdateHealthVC: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataSource.count}
+        
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        return self.bodyTemp=dataSource[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row]
+    }
+    
 }
