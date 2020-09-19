@@ -95,10 +95,10 @@ class UpdateHealthVC: UIViewController{
         
     }
     @IBAction func updateTemperature(_ sender: Any) {
-        if(self.bodyTemp==""){
-            self.bodyTemp="35°C - 37.5°C"
+        if(bodyTemp==""){
+            bodyTemp="35°C - 37.5°C"
         }
-        
+        print("Body Temperature",bodyTemp)
         //get current date
         let formatter : DateFormatter = DateFormatter()
         formatter.dateFormat = "d/M/yy"
@@ -106,7 +106,7 @@ class UpdateHealthVC: UIViewController{
         
         //update query
         let db = Firestore.firestore()
-        db.collection("users").document(documentIdString).setData(["temp":self.bodyTemp,"tempdate":tempDate], merge:true)
+        db.collection("users").document(documentIdString).setData(["temp":bodyTemp,"tempdate":tempDate], merge:true)
         
         self.tempLabel.text=bodyTemp
         self.updatedDateHealth.text=tempDate

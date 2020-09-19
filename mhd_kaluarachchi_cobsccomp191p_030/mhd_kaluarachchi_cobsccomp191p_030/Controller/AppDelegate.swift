@@ -38,8 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("\(document.documentID) => \(document.data())")
                         let documentData = document.data()
                         let typedata = documentData["type"]! as! String
+                        let healthdata = documentData["health"]! as! String
                         print(typedata)
                         User.userType=typedata
+                        User.userHealth=healthdata
                 }
               }
             }

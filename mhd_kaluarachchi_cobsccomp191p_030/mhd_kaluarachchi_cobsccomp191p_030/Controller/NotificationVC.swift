@@ -11,8 +11,10 @@ import UIKit
 
 class NotificationVC: UIViewController{
     
+    @IBOutlet weak var NotifSummaryTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotifSummaryTextView.isScrollEnabled = true
    
     }
     

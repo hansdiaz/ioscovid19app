@@ -34,10 +34,11 @@ class UpdateProfileVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IndexText.isHidden=true
         
         if(User.userType=="Student"){
-            IndexText.isHidden=false
+            IndexText.placeholder="Enter Student Id"
+        }else{
+            IndexText.placeholder="Enter Work Id"
         }
         
         ErrorLabel.isHidden = true
@@ -100,18 +101,10 @@ class UpdateProfileVC: UIViewController{
             return
         }
        
-        if(User.userType=="Student"){
-                if (IndexText.text?.count == 0) {
-                ErrorLabel.isHidden = false
-                ErrorLabel.text = "Please fill all details"
-                return
-                }else{
-                    index = IndexText.text!
-            }
-        }else if(User.userType=="Academic Staff"){
-            index=""
-        }else if(User.userType=="Non Academic Staff"){
-            index=""
+        guard let indexId = IndexText.text, IndexText.text?.count != 0  else {
+            ErrorLabel.isHidden = false
+            ErrorLabel.text = "Please fill all details"
+            return
         }
         
         if (country == "") {
@@ -121,7 +114,7 @@ class UpdateProfileVC: UIViewController{
         
         //update query
         let db = Firestore.firestore()
-        db.collection("users").document(documentIdString).setData(["firstname":fName,"lastname":lName,"index":index,"country":country], merge:true)
+        db.collection("users").document(documentIdString).setData(["firstname":fName,"lastname":lName,"index":indexId,"country":country], merge:true)
         
         
         let alert = UIAlertController(title: "Profile Update Success", message: nil, preferredStyle: .alert)

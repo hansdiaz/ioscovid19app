@@ -21,6 +21,9 @@ class RegisterVC: UIViewController{
 
     @IBOutlet weak var userPicker: UIPickerView!
     
+    @IBOutlet weak var personCircleImage: UIImageView!
+    
+    
     @IBOutlet weak var FirstName: UITextField!
     
     @IBOutlet weak var LastName: UITextField!
@@ -35,11 +38,19 @@ class RegisterVC: UIViewController{
     
     @IBOutlet var formStackView: UIStackView!
     
+    let alert = UIAlertController()
+    
+    var imagePicker = UIImagePickerController()
+    
     var userType=""
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        personCircleImage?.layer.cornerRadius = (personCircleImage?.frame.size.width ?? 0.0) / 2
+        personCircleImage?.clipsToBounds = true
+        //personCircleImage?.layer.borderWidth = 3.0
+        //personCircleImage?.layer.borderColor = UIColor.white.cgColor
+       
         self.passwordLabel.isHidden=true
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false;
@@ -70,9 +81,32 @@ class RegisterVC: UIViewController{
         
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func pickImage(_ sender: Any) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            print("Button capture")
+
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
+        self.dismiss(animated: true, completion: { () -> Void in
+
+        })
+        self.personCircleImage.image = image
+    }
+    
     
     @IBAction func createNow(_ sender: Any) {
         var status=true
@@ -168,11 +202,12 @@ class RegisterVC: UIViewController{
     }
 
     
+    
 
 }
 
 
-extension RegisterVC: UIPickerViewDelegate, UIPickerViewDataSource{
+extension RegisterVC: UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -185,5 +220,42 @@ extension RegisterVC: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataSource[row]
     }
+    
+    //below functions for image picker view
+    /*func showChooseSourceTypeAlertController() {
+        let photoLibraryAction = UIAlertAction(title: "Choose a Photo", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .photoLibrary)
+        }
+        let cameraAction = UIAlertAction(title: "Take a New Photo", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .camera)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+        let alert = UIAlertController(preferredStyle: .actionSheet, title: nil, message: nil, actions: [photoLibraryAction, cameraAction, cancelAction], completion: nil)
+        
+        let alert = UIAlertController(title: "Profile Update Success", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
+    }
+    
+    func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            personCircleImage.image = editedImage.withRenderingMode(.alwaysOriginal)
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            personCircleImage.image = originalImage.withRenderingMode(.alwaysOriginal)
+        }
+        dismiss(animated: true, completion: nil)
+    }*/
 }
+
+
 

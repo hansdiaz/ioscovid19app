@@ -111,6 +111,7 @@ class SurveyScreen5VC: UIViewController{
             //low possibility
             health="low possibility"
         }
+        User.userHealth=health
         
         print("``````````````````````````````````````````````````````````````````````````````````````````````````````````````````")
         print(health)

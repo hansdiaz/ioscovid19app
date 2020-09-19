@@ -32,7 +32,6 @@
 		4484280C2512991E0052B082 /* UpdateHealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280B2512991E0052B082 /* UpdateHealthVC.swift */; };
 		4484280E251299CD0052B082 /* CreateNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280D251299CD0052B082 /* CreateNotificationVC.swift */; };
 		4484281025129AE10052B082 /* FullMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4484280F25129AE10052B082 /* FullMapVC.swift */; };
-		448428122512A5050052B082 /* AllNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448428112512A5050052B082 /* AllNotificationsVC.swift */; };
 		448428142512AB580052B082 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448428132512AB580052B082 /* NotificationVC.swift */; };
 		44ABA4F82511CBA200A7510C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABA4F72511CBA200A7510C /* HomeVC.swift */; };
 		B39214971BD0CD70660FBC52 /* Pods_mhd_kaluarachchi_cobsccomp191p_030.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A17E5E3F9A5E82BCAFA1A0 /* Pods_mhd_kaluarachchi_cobsccomp191p_030.framework */; };
@@ -92,7 +91,6 @@
 		4484280B2512991E0052B082 /* UpdateHealthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHealthVC.swift; sourceTree = "<group>"; };
 		4484280D251299CD0052B082 /* CreateNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationVC.swift; sourceTree = "<group>"; };
 		4484280F25129AE10052B082 /* FullMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapVC.swift; sourceTree = "<group>"; };
-		448428112512A5050052B082 /* AllNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotificationsVC.swift; sourceTree = "<group>"; };
 		448428132512AB580052B082 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		44ABA4F72511CBA200A7510C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A799CE39D3C326835CAD6D4D /* Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig"; path = "Target Support Files/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests/Pods-mhd_kaluarachchi_cobsccomp191p_030Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				4484280B2512991E0052B082 /* UpdateHealthVC.swift */,
 				4484280D251299CD0052B082 /* CreateNotificationVC.swift */,
 				4484280F25129AE10052B082 /* FullMapVC.swift */,
-				448428112512A5050052B082 /* AllNotificationsVC.swift */,
 				448428132512AB580052B082 /* NotificationVC.swift */,
 				443ED0DD251311070092E111 /* RootVC.swift */,
 				443ED0E1251329850092E111 /* SettingsVC.swift */,
@@ -531,7 +528,6 @@
 				443ED0DE251311070092E111 /* RootVC.swift in Sources */,
 				448427FE25127ADE0052B082 /* SurveyScreen3VC.swift in Sources */,
 				4406CC402511204E00D2FF6B /* SurveyScreen1VC.swift in Sources */,
-				448428122512A5050052B082 /* AllNotificationsVC.swift in Sources */,
 				4406CC3E251106CB00D2FF6B /* SurveyBorderStyling.swift in Sources */,
 				443ED0E425136DDC0092E111 /* Survey.swift in Sources */,
 				44842808251294480052B082 /* Regex.swift in Sources */,
