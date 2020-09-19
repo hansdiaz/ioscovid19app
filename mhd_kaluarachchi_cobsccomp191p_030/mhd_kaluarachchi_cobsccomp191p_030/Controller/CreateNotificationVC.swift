@@ -52,6 +52,27 @@ class CreateNotificationVC: UIViewController{
         
         
         
+        
+        //update document of NOTIFICATION collection
+        db.collection("notification").document("update").setData([
+                    "notiftopic": notifTopic,
+                    "notifsummary": notifSummary,
+                    "notifdate": notifDate,
+                    "uid": userdata
+                    
+                ]) { (error) in
+                    
+                    if error != nil {
+                        // Show error message
+                        self.errorLabel.isHidden=false
+                        self.errorLabel.text="Unexpected error occured"
+                    }
+                    if proceedStatus==true{
+                        self.performSegue(withIdentifier: "publishandgohome", sender: nil)
+                    }
+        }
+        
+        //add document to NOTIFICATIONS collection
         db.collection("notifications").addDocument(data: ["notiftopic":notifTopic, "notifsummary":notifSummary,"notifdate":notifDate, "uid": userdata ]) { (error) in
             
             if error != nil {

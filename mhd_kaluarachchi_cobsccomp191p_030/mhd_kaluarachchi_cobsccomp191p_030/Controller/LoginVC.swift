@@ -91,13 +91,14 @@ class LoginVC:UIViewController{
                             let typedata = documentData["type"]! as! String
                             print(typedata)
                             User.userType=typedata
+                            self.performSegue(withIdentifier: "loginToHome", sender: nil)
                     }
                   }
                 }
                 
                 
                 
-                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+                
             }
         }
             

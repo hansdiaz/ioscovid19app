@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W08-Dn-0cK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W08-Dn-0cK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -52,6 +52,7 @@
                         <outlet property="personCircleImage" destination="r6Q-bR-Y98" id="OwI-Tu-1xC"/>
                         <outlet property="scrollView" destination="Kgj-oo-5NS" id="duv-QM-YlW"/>
                         <outlet property="userPicker" destination="feB-G4-5HQ" id="GBP-lY-X3r"/>
+                        <segue destination="W08-Dn-0cK" kind="presentation" identifier="registerToHome" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="PrP-TO-qq6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,7 +174,6 @@
                             <state key="normal" title="Create Now"/>
                             <connections>
                                 <action selector="createNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRL-uo-kv8"/>
-                                <segue destination="W08-Dn-0cK" kind="presentation" identifier="registerToHome" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="usc-LZ-icr"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xh5-Pv-Jg1">
@@ -261,7 +261,6 @@
                                         <state key="normal" title="Sign In Now"/>
                                         <connections>
                                             <action selector="signInNow:" destination="cDF-Uh-lJk" eventType="touchUpInside" id="DUB-kz-F7b"/>
-                                            <segue destination="W08-Dn-0cK" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="gbE-nS-OO3"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't Have an Account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmq-fT-Fn2">
@@ -320,6 +319,7 @@
                         <outlet property="EmailAddress" destination="CNr-su-V7w" id="hPq-hD-g1l"/>
                         <outlet property="Password" destination="4VX-fl-3Cp" id="Vzn-se-LSl"/>
                         <outlet property="errorLabel" destination="MgI-OK-q2p" id="B7M-2R-Ta4"/>
+                        <segue destination="W08-Dn-0cK" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="flm-QG-mA8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auY-Nn-Jcp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -451,6 +451,8 @@
                     <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" landscapeImage="house" selectedImage="house" id="Jn3-0Y-LTO"/>
                     <navigationItem key="navigationItem" title="Home" id="QtF-L0-EIq"/>
                     <connections>
+                        <outlet property="MessageButton" destination="NTh-lH-FNA" id="uS4-K4-PNj"/>
+                        <outlet property="MessageLabel" destination="8RH-E7-pda" id="qrW-ds-52s"/>
                         <outlet property="formStackView" destination="w9L-fg-5cb" id="yh0-qE-72N"/>
                         <outlet property="highLabel" destination="72S-Ue-oKx" id="ITI-CN-LKb"/>
                         <outlet property="lowLabel" destination="G2f-hM-atk" id="364-C1-7Pe"/>
@@ -544,6 +546,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="messageAction:" destination="Bcy-N8-Og3" eventType="touchUpInside" id="cT8-0B-Sfe"/>
                                                         <segue destination="2KO-In-rzg" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="di4-eQ-BtU"/>
                                                     </connections>
                                                 </button>
@@ -604,6 +607,9 @@
                                                     <state key="normal" title="See More">
                                                         <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="0kS-0p-GmF" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="mjf-yd-yiK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1664,7 +1670,7 @@
         <scene sceneID="kAK-np-uvW">
             <objects>
                 <viewController title="HealthVC" id="0lA-rv-03U" customClass="UpdateHealthVC" customModule="NIBM_COVID19" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tpl-hv-Nv9">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Tpl-hv-Nv9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1775,10 +1781,10 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKR-hn-41K" userLabel="LoginRequestView">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKR-hn-41K" userLabel="LoginRequestView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="niF-Bf-Fzd">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="niF-Bf-Fzd">
                                         <rect key="frame" x="0.0" y="272.5" width="414" height="180"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looks like you need to signin" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMc-7z-NJp">
@@ -2386,6 +2392,52 @@
             </objects>
             <point key="canvasLocation" x="4543" y="1142"/>
         </scene>
+        <!--SurveyResults-->
+        <scene sceneID="bjQ-Wc-gCh">
+            <objects>
+                <viewController title="SurveyResults" id="0kS-0p-GmF" customClass="SurveyChartVC" customModule="NIBM_COVID19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OBj-qO-h1D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="cqO-He-XxP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-zk-s9k">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="S8C-DQ-APU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Go to Home"/>
+                                        <connections>
+                                            <segue destination="W08-Dn-0cK" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="n8S-Ff-EIK"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pL8-fx-s68" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="111" width="414" height="707"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cqO-He-XxP" firstAttribute="top" secondItem="b1x-Nh-1gd" secondAttribute="top" id="KTf-SG-j9r"/>
+                            <constraint firstItem="b1x-Nh-1gd" firstAttribute="trailing" secondItem="cqO-He-XxP" secondAttribute="trailing" id="Spc-W6-x9Y"/>
+                            <constraint firstItem="cqO-He-XxP" firstAttribute="leading" secondItem="OBj-qO-h1D" secondAttribute="leading" id="THt-bh-dNU"/>
+                            <constraint firstItem="b1x-Nh-1gd" firstAttribute="bottom" secondItem="cqO-He-XxP" secondAttribute="bottom" id="qp4-Ir-1tu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b1x-Nh-1gd"/>
+                    </view>
+                    <connections>
+                        <outlet property="pieChartView" destination="pL8-fx-s68" id="y7G-be-Ajo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLQ-fU-wET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2154" y="2079"/>
+        </scene>
         <!--Notification-->
         <scene sceneID="jhD-sM-tcT">
             <objects>
@@ -2457,11 +2509,12 @@
                     </view>
                     <connections>
                         <outlet property="NotifSummaryTextView" destination="nBI-hn-dKL" id="4iD-RE-0jb"/>
+                        <outlet property="NotifTopicTextView" destination="rdo-GG-aJ2" id="4ta-yK-Edp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rab-cA-0CS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2889.8550724637685" y="2100.6696428571427"/>
+            <point key="canvasLocation" x="2890" y="2079"/>
         </scene>
         <!--AddNotificationVC-->
         <scene sceneID="YEf-BU-T0V">
@@ -2565,7 +2618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYT-Mo-mnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3800.0000000000005" y="2078.5714285714284"/>
+            <point key="canvasLocation" x="3667" y="2079"/>
         </scene>
         <!--Item-->
         <scene sceneID="RUT-Vb-0MD">
@@ -2610,8 +2663,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="q3P-jO-EQS"/>
-        <segue reference="usc-LZ-icr"/>
-        <segue reference="qFa-6D-EJC"/>
+        <segue reference="n8S-Ff-EIK"/>
+        <segue reference="EzC-iT-guR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Contactless" width="400" height="400"/>

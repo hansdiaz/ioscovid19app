@@ -29,11 +29,38 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var highLabel: UILabel!
     
+    
+    
+    @IBOutlet weak var MessageButton: UIButton!
+    
+    @IBOutlet weak var MessageLabel: UILabel!
+    
     // Used to start getting the users location
     let locationManager = CLLocationManager()
     
+    var notifSummary=""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        //load the latest notification
+        
+        let db = Firestore.firestore()
+
+        db.collection("notification").document("update").getDocument { (document, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                let documentData=document?.data()
+                self.notifSummary = documentData?["notiftopic"]! as! String
+                self.MessageLabel.text=self.notifSummary
+                
+          }
+        }
+        
+ 
         
         //setup the scrollview constraints
         
@@ -67,7 +94,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
         var midCount=0
         var highCount=0
         
-        let db = Firestore.firestore()
+        
         
         db.collection("users").whereField("health", isEqualTo: low).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -89,7 +116,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
           if let err = err {
               print("Error getting documents: \(err)")
           } else {
-              highCount = midCount+querySnapshot!.count
+            highCount = highCount+querySnapshot!.count
             self.highLabel.text=String(highCount)
           }
         }
@@ -114,6 +141,12 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     }
                 
         
+    @IBAction func messageAction(_ sender: Any) {
+        
+        
+    }
+    
+    
     //location gaining functions
     // Print out the location to the console
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4406CC3E251106CB00D2FF6B /* SurveyBorderStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406CC3D251106CB00D2FF6B /* SurveyBorderStyling.swift */; };
 		4406CC402511204E00D2FF6B /* SurveyScreen1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406CC3F2511204E00D2FF6B /* SurveyScreen1VC.swift */; };
+		4438377B251622A5005DCDCA /* SurveyChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438377A251622A5005DCDCA /* SurveyChartVC.swift */; };
 		443ED0DE251311070092E111 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0DD251311070092E111 /* RootVC.swift */; };
 		443ED0E025131B160092E111 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0DF25131B160092E111 /* User.swift */; };
 		443ED0E2251329850092E111 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED0E1251329850092E111 /* SettingsVC.swift */; };
@@ -62,6 +63,7 @@
 		3288376D6DE67986913461AD /* Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig"; path = "Target Support Files/Pods-mhd_kaluarachchi_cobsccomp191p_030/Pods-mhd_kaluarachchi_cobsccomp191p_030.debug.xcconfig"; sourceTree = "<group>"; };
 		4406CC3D251106CB00D2FF6B /* SurveyBorderStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyBorderStyling.swift; sourceTree = "<group>"; };
 		4406CC3F2511204E00D2FF6B /* SurveyScreen1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyScreen1VC.swift; sourceTree = "<group>"; };
+		4438377A251622A5005DCDCA /* SurveyChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyChartVC.swift; sourceTree = "<group>"; };
 		443ED0DD251311070092E111 /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		443ED0DF25131B160092E111 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		443ED0E1251329850092E111 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				448428132512AB580052B082 /* NotificationVC.swift */,
 				443ED0DD251311070092E111 /* RootVC.swift */,
 				443ED0E1251329850092E111 /* SettingsVC.swift */,
+				4438377A251622A5005DCDCA /* SurveyChartVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				448428142512AB580052B082 /* NotificationVC.swift in Sources */,
 				4481F4F5250F40E000A05555 /* LoginVC.swift in Sources */,
 				4484280C2512991E0052B082 /* UpdateHealthVC.swift in Sources */,
+				4438377B251622A5005DCDCA /* SurveyChartVC.swift in Sources */,
 				4484280225127B2D0052B082 /* SurveyScreen5VC.swift in Sources */,
 				4484280025127B060052B082 /* SurveyScreen4VC.swift in Sources */,
 				4484280E251299CD0052B082 /* CreateNotificationVC.swift in Sources */,
