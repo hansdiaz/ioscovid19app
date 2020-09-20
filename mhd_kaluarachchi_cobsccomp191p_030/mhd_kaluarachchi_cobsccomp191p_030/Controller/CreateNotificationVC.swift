@@ -23,16 +23,10 @@ class CreateNotificationVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.errorLabel.isHidden=true
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-           view.addGestureRecognizer(tap)
    
     }
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
+   
     
     @IBAction func publishNotification(_ sender: Any) {
         var proceedStatus=true

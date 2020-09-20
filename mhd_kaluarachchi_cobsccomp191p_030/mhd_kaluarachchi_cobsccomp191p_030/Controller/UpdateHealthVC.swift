@@ -40,6 +40,8 @@ class UpdateHealthVC: UIViewController{
     var bodyTemp=""
     var documentIdString=""
     
+    var pickerStatus=false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,8 +105,10 @@ class UpdateHealthVC: UIViewController{
                         self.documentIdString=document.documentID
                         if(temp=="35°C - 37.5°C"){
                             self.TempPicker.selectRow(0, inComponent:0, animated:true)
+                            self.pickerStatus=false
                         }else if(temp=="Above 37.5°C"){
                             self.TempPicker.selectRow(1, inComponent:0, animated:true)
+                            self.pickerStatus=true
                         }
                 }
               }
@@ -133,9 +137,13 @@ class UpdateHealthVC: UIViewController{
     
     
     @IBAction func updateTemperature(_ sender: Any) {
-        if(bodyTemp==""){
+        if(bodyTemp=="" && pickerStatus==false){
             bodyTemp="35°C - 37.5°C"
+        }else if(bodyTemp=="" && pickerStatus==true){
+            bodyTemp="Above 37.5°C"
         }
+        
+        
         print("Body Temperature",bodyTemp)
         //get current date
         let formatter : DateFormatter = DateFormatter()

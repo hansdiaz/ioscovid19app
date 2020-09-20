@@ -9,7 +9,7 @@ target 'mhd_kaluarachchi_cobsccomp191p_030' do
 pod 'Firebase/Auth'
 pod 'Firebase/Analytics'
 pod 'Firebase/Firestore'
-pod 'GeoFire'
+pod 'Firebase/Database'
 pod 'Charts'
 # Add the pods for any other Firebase products you want to use in your app
 # For example, to use Firebase Authentication and Cloud Firestore

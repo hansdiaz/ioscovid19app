@@ -32,6 +32,8 @@ class UpdateProfileVC: UIViewController{
     var userIndex=""
     var countrySelected=""
     
+    var pickerStatus=false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +76,10 @@ class UpdateProfileVC: UIViewController{
                         
                         if(self.countrySelected=="Sri Lanka"){
                             self.CountryPicker.selectRow(0, inComponent:0, animated:true)
+                            self.pickerStatus=false
                         }else if(self.countrySelected=="United Kingdom"){
                             self.CountryPicker.selectRow(1, inComponent:0, animated:true)
+                            self.pickerStatus=true
                         }
                 }
               }
@@ -107,8 +111,12 @@ class UpdateProfileVC: UIViewController{
             return
         }
         
-        if (country == "") {
+        if (country == "" && pickerStatus==false)
+        {
             country="Sri Lanka"
+        }else if(country == "" && pickerStatus==true)
+        {
+            country="United Kingdom"
         }
         ErrorLabel.isHidden=true
         

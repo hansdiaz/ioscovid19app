@@ -15,12 +15,10 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var LogoutButton: UIButton!
     
-    @IBOutlet weak var signOutErrorLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.signOutErrorLabel.isHidden=true
         
         if(User.userLogStatus==false){
             self.ProfileUpdateButton.isHidden=true
@@ -47,8 +45,11 @@ class SettingsVC: UIViewController {
             
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-            self.signOutErrorLabel.isHidden=false
-            self.signOutErrorLabel.text="Error: couldn't sign-out"
+            
+            let alert = UIAlertController(title: "Signout Error", message: "Sorry we couldnt sign you out, check for connectivity problems", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: nil))
+
+            self.present(alert, animated: true)
         }
         
     }
