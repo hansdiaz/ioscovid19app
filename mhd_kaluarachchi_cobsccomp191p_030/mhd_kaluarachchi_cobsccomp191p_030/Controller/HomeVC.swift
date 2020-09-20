@@ -14,6 +14,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import CoreLocation
+import MapKit
 
 
 
@@ -22,6 +23,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var formStackView: UIStackView!
     
     
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var lowLabel: UILabel!
     
@@ -37,6 +39,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     
     // Used to start getting the users location
     let locationManager = CLLocationManager()
+    var mapHasCenteredOnce = false
     
     var notifSummary=""
     
@@ -120,13 +123,42 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
             self.highLabel.text=String(highCount)
           }
         }
+        locationSetup()
         
         
         
+  
+    }
+    
+     
+    @IBAction func gotoMap(_ sender: Any) {
+        if(User.userLogStatus==false)
+               {
+                  let alertController = UIAlertController(title: "Authentication Required",
+                                                          message: "Looks like you need to signin first",
+                                                          preferredStyle: .alert)
+                  
+                  let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                  alertController.addAction(cancelAction)
+                  
+                  let openAction = UIAlertAction(title: "Signin", style: .default) { (action) in
+                      self.performSegue(withIdentifier: "hometologin", sender: nil)
+                  }
+                  alertController.addAction(openAction)
+                  
+                  self.present(alertController, animated: true, completion: nil)
+               }
+               else{
+                   self.performSegue(withIdentifier: "gotofullmap", sender: nil)
+               }
+    }
+    
+    func locationSetup ()
+    {
         //locationsetup
         
         // For use when the app is open & in the background
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         
         // For use when the app is open
         //locationManager.requestWhenInUseAuthorization()
@@ -134,17 +166,13 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
         // If location services is enabled get the users location
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
+            mapView.userTrackingMode = MKUserTrackingMode.follow //The map follows user's location
             locationManager.desiredAccuracy = kCLLocationAccuracyBest // You can change the locaiton accuary here.
             locationManager.startUpdatingLocation()
+            
         }
-  
     }
-                
         
-    @IBAction func messageAction(_ sender: Any) {
-        
-        
-    }
     
     
     //location gaining functions
@@ -152,6 +180,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print("Current user location:",location.coordinate)
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
+            
+            self.mapView.setRegion(coordinateRegion, animated: true)
+            
         }
     }
     

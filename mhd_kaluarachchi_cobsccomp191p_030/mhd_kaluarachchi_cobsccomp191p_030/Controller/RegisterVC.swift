@@ -173,7 +173,7 @@ class RegisterVC: UIViewController{
                     let regDate : String = formatter.string(from:   NSDate.init(timeIntervalSinceNow: 0) as Date)
                     
                     
-                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate,"temp":"","tempdate":"","health":"","surveydate":"","index":"","country":"", "uid": result!.user.uid ]) { (error) in
+                    db.collection("users").addDocument(data: ["firstname":fName, "lastname":lName,"type":self.userType,"regdate":regDate,"temp":"35°C - 37.5°C","tempdate":regDate,"health":"","surveydate":"","index":"","country":"", "uid": result!.user.uid ]) { (error) in
                         
                         if error != nil {
                             // Show error message

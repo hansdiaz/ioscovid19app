@@ -12,30 +12,77 @@ import Firebase
 
 class NotificationVC: UIViewController{
     
-    @IBOutlet weak var NotifTopicTextView: UILabel!
-    @IBOutlet weak var NotifSummaryTextView: UITextView!
+    @IBOutlet weak var tblNotification: UITableView!
+    
+    var notificationData : [Notification] = []
+    
+    var notiftitle=""
+    var notifsummary=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotifSummaryTextView.isScrollEnabled = true
-        let db = Firestore.firestore()
-
-        db.collection("notification").document("update").getDocument { (document, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                let documentData=document?.data()
-                let notifTopic = documentData?["notiftopic"]! as! String
-                let notifSummary = documentData?["notifsummary"]! as! String
-                self.NotifTopicTextView.text=notifTopic
-                self.NotifSummaryTextView.text=notifSummary
-          }
-        }
-        
-   
+        tblNotification.register(UINib(nibName: "CellNews", bundle: nil), forCellReuseIdentifier: "resuableNewsCell")
+        fetchNotificationData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func fetchNotificationData() {
+        let rtDBRef = Database.database().reference()
+        var initialRead = true
+        notificationData.removeAll()
+        rtDBRef.child("notifications").observe(.childAdded, with: {
+            snapshot in
+            if initialRead == false {
+                if let dict = snapshot.value as? [String : Any] {
+                    for data in dict {
+                        guard let innerData = data.value as? [String : Any] else{
+                            continue
+                        }
+                        
+                        self.notificationData.append(Notification(title: innerData["title"] as! String, content: innerData["content"] as! String, date: innerData["date"] as! String))
+                    }
+                    self.tblNotification.reloadData()
+                }
+            }
+        })
+        
+        rtDBRef.child("notifications").observeSingleEvent(of: .value, with: {
+            snapshot in
+            initialRead = false
+            
+            if let dict = snapshot.value as? [String : Any] {
+                for data in dict {
+                    guard let innerData = data.value as? [String : Any] else{
+                        continue
+                    }
+                    
+                    self.notificationData.append(Notification(title: innerData["title"] as! String, content: innerData["content"] as! String,date: innerData["date"] as! String))
+                }
+                self.tblNotification.reloadData()
+            }
+        })
+    }
+}
+
+extension NotificationVC : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return notificationData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tblNotification.dequeueReusableCell(withIdentifier: "resuableNewsCell", for: indexPath) as! CellNews
+        cell.configureCell(title: notificationData[indexPath.row].title, content: notificationData[indexPath.row].content,date: notificationData[indexPath.row].date)
+        return cell
+    }
+}
+
+extension NotificationVC : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: notificationData[indexPath.row].title, message: notificationData[indexPath.row].content, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alert , animated: true)
     }
 }

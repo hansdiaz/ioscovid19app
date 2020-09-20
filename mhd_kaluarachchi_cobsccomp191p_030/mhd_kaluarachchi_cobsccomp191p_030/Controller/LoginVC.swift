@@ -67,6 +67,7 @@ class LoginVC:UIViewController{
             
             if error != nil {
                 // Couldn't sign in
+                self.errorLabel.isHidden=false
                 self.errorLabel.text = "Invalid credentials"
                 User.userLogStatus=false
                 print("User login unsuccessful")
@@ -95,9 +96,6 @@ class LoginVC:UIViewController{
                     }
                   }
                 }
-                
-                
-                
                 
             }
         }

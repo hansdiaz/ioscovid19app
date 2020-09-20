@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import Firebase
 
 class CreateNotificationVC: UIViewController{
     
@@ -22,8 +23,17 @@ class CreateNotificationVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.errorLabel.isHidden=true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+           view.addGestureRecognizer(tap)
    
     }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func publishNotification(_ sender: Any) {
         var proceedStatus=true
         //validation
@@ -72,16 +82,20 @@ class CreateNotificationVC: UIViewController{
                     }
         }
         
-        //add document to NOTIFICATIONS collection
-        db.collection("notifications").addDocument(data: ["notiftopic":notifTopic, "notifsummary":notifSummary,"notifdate":notifDate, "uid": userdata ]) { (error) in
-            
-            if error != nil {
-                // Show error message
-                self.errorLabel.isHidden=false
-                self.errorLabel.text="Unexpected error occured"
-            }
-            if proceedStatus==true{
-                self.performSegue(withIdentifier: "publishandgohome", sender: nil)
+        //code for publishing to the real time firebase for viewing purpose
+        let rtDBRef = Database.database().reference()
+        let notificationData = [
+            "title" : notifTopic,
+            "content" : notifSummary,
+            "date" : notifDate
+        ]
+        
+        rtDBRef.child("notifications").child(rtDBRef.child("notifications").childByAutoId().key ?? "defaultkey").setValue(notificationData) {
+            (error: Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data not saved : " + error.localizedDescription)
+            } else {
+                print("Data saved")
             }
         }
     }
