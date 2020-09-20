@@ -169,13 +169,6 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
-		4409EC312517748400061CC9 /* CustomStyling */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomStyling;
-			sourceTree = "<group>";
-		};
 		4451F22A250DC72700A78346 = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +194,6 @@
 		4451F235250DC72700A78346 /* mhd_kaluarachchi_cobsccomp191p_030 */ = {
 			isa = PBXGroup;
 			children = (
-				4409EC312517748400061CC9 /* CustomStyling */,
 				4409EC2A25175DEA00061CC9 /* CustomView */,
 				4451F26B250E3A7500A78346 /* Storyboards */,
 				4451F269250E17B900A78346 /* GoogleService-Info.plist */,

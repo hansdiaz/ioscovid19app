@@ -2092,7 +2092,7 @@
                                             <constraint firstAttribute="height" constant="40" id="TsT-6n-gyo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jp3-bE-Gsa" userLabel="LastName">
                                         <rect key="frame" x="0.0" y="160" width="374" height="40"/>
@@ -2100,7 +2100,7 @@
                                             <constraint firstAttribute="height" constant="40" id="9Em-3F-moG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Student ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpe-1A-W0G">
                                         <rect key="frame" x="0.0" y="210" width="374" height="40"/>
@@ -2563,9 +2563,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hIM-Yu-JYf"/>
         <segue reference="q3P-jO-EQS"/>
-        <segue reference="dXx-Ag-yeO"/>
+        <segue reference="flm-QG-mA8"/>
         <segue reference="EzC-iT-guR"/>
     </inferredMetricsTieBreakers>
     <resources>
